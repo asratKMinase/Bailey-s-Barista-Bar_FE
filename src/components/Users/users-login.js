@@ -33,16 +33,12 @@ export default function UsersLogin() {
     const url = "http://localhost:9008/auth";
     const urlu = "http://localhost:9008";
 
- 
-
     async function login() {
-
         const users = {
             username: usernameInput.current.value,
             password: passwordInput.current.value,
         };
         try {
-        
             const response = await fetch(`${urlu}/users/findAllUsers`);
             const usersData = await response.json();
 
@@ -54,25 +50,19 @@ export default function UsersLogin() {
                 }else {
                     navigate("/baristasignup");
                 }
-                
             }
-        
         } catch (e) {
             console.error(e);
-    
         }
-
-
-
         if (users.password === "Guest") {
             alert("You need to reset password");
         } else {
             try {
                 const response = await axios.post(`${url}`, users);
                 console.log(response.data);
-                console.log("Hey this is the user prior ", users);
+                console.log(users);
                 setUser({ ...users, username: users.username});
-                console.log("This is after we set the user ", users);
+                console.log(users);
                 
             } catch (error) {
                 console.error(error.response.data);
