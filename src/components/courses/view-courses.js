@@ -3,6 +3,20 @@ import { userContext } from "../../App";
 import { useState ,useContext, useEffect} from "react";
 import { Navigate } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import Image from "../../mainBagrroundC.jpg";
+
+const styles = {
+  heroContainer: {
+    height: "100vh",
+    backgroundImage: `url(${Image})`,
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    width: "100%",
+    margin: 0,
+    padding: 5,
+    opacity: "100%",
+  }
+ };
 
 const styleObj = {
     fontSize: 25,
@@ -11,7 +25,7 @@ const styleObj = {
     paddingTop: "10px",
 }
 
-const BaristaSignUp = () => {
+const ViewCourses = () => {
 
 const url = "http://localhost:9008";
 
@@ -29,22 +43,21 @@ async function display() {
 
     try {
         
-        const response = await fetch(`${url}/classes/findAllClasses`);
-        const classesData = await response.json();
-        console.log(classesData);
-        const classesDataRows = classesData.map((e)=>{
+        const response = await fetch(`${url}/courses/findAllCourses`);
+        const coursesData = await response.json();
+        console.log(coursesData);
+        const coursesDataRows = coursesData.map((e)=>{
             
             return (
                 <TableRow>
-                    <TableCell align="center">{e.id}</TableCell>
-                    <TableCell align="center">{e.cname}</TableCell>
-                    <TableCell align="center">{e.sdate}</TableCell>
-                    <TableCell align="center">{e.edate}</TableCell>
+                    <TableCell align="center" key ={1}>{e.courseid}</TableCell>
+                    <TableCell align="center" key ={2}>{e.coname}</TableCell>
+                    <TableCell align="center" key ={3}>{e.id.id}</TableCell>
                 </TableRow>
             );
         });
     
-        setBody(classesDataRows);
+        setBody(coursesDataRows);
     } catch (e) {
         console.error(e);
 
@@ -55,25 +68,24 @@ async function display() {
       <>
       <center>
         <nav className="baristasup">
-           <h1 style={styleObj}>Welcome to sign up page</h1>
+           <h1 style={styleObj}>Welcome to courses page</h1>
         </nav>
         <TableContainer component={Paper}>
             <Table >
                 <TableHead>
                     <TableRow>
+                        <TableCell style={{backgroundColor:'lightgrey', color: 'black' }} align="center">Challenge ID</TableCell>
+                        <TableCell style={{backgroundColor:'lightgrey', color: 'black' }} align="center">Challenge Name</TableCell>
                         <TableCell style={{backgroundColor:'lightgrey', color: 'black' }} align="center">Class ID</TableCell>
-                        <TableCell style={{backgroundColor:'lightgrey', color: 'black' }} align="center">Class Name</TableCell>
-                        <TableCell style={{backgroundColor:'lightgrey', color: 'black' }} align="center">Start Date</TableCell>
-                        <TableCell style={{backgroundColor:'lightgrey', color: 'black' }} align="center">End Date</TableCell>
                     </TableRow>
                 </TableHead>
                 <tbody>{body}</tbody>
             </Table>
             </TableContainer>
-            {/* <Button variant='contained' onClick={() => Navigate("/login")}>Back</Button> */}
+            <Button variant='contained' onClick={() => navigate("/coursesdashboard")}>Back</Button>
       </center>
       </>
 
      );
 }
-export default BaristaSignUp;
+export default ViewCourses;

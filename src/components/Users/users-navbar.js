@@ -35,10 +35,9 @@ export default function UsersNavBar(){
           <h1 style={styleObj}>Admin Dashboard </h1>
         <Box display="flex" justifyContent="center">
           <Button  variant='contained' onClick={() => navigate("/usersView")}>users's Info</Button>
-          <Button  variant='contained' onClick={() => navigate("/baristasignup")}>Classes</Button>
-          <Button  variant='contained' onClick={() => navigate("/baristasignup")}>Courses</Button>
+          <Button variant='contained' onClick={() => navigate("/classes")}>Classes</Button>
+          <Button  variant='contained' onClick={() => navigate("/addcourses")}>Courses</Button>
           <Button  variant='contained' onClick={() => navigate("/skills")}>Skills</Button>
-          <Button  variant='contained' onClick={() => navigate("/challenges")}>Challenges</Button>
           <Button  variant='contained' onClick={() => navigate("/mainnavbar")}>Log Out</Button>   
           </Box>
           </Paper>

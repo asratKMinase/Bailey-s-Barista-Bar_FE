@@ -46,18 +46,17 @@ async function display() {
         
         const response = await fetch(`${url}/users/findAllUsers`);
         const usersData = await response.json();
-    
-
-    
         const usersDataRows = usersData.map((e)=>{
             
             return (
                 <TableRow>
-                    <TableCell align="center">{e.username}</TableCell>
-                    <TableCell align="center">{e.fname}</TableCell>
-                    <TableCell align="center">{e.lname}</TableCell>
-                    <TableCell align="center">{e.rdate}</TableCell>
-                    <TableCell align="center">{e.email}</TableCell>
+                    <TableCell align="center" key ={1}>{e.username}</TableCell>
+                    <TableCell align="center" key ={2}>{e.fname}</TableCell>
+                    <TableCell align="center" key ={3}>{e.lname}</TableCell>
+                    <TableCell align="center" key ={4}>{e.rdate}</TableCell>
+                    <TableCell align="center" key ={5}>{String(e.teacher)}</TableCell>
+                    <TableCell align="center" key ={6}>{String(e.admin)}</TableCell>
+                    <TableCell align="center" key ={7}>{e.email}</TableCell>
                 </TableRow>
             );
         });
@@ -65,10 +64,8 @@ async function display() {
         setBody(usersDataRows);
     } catch (e) {
         console.error(e);
-
     }
 }
-
     return ( 
       <>
       <center>
@@ -82,7 +79,9 @@ async function display() {
                         <TableCell style={{backgroundColor:'lightgrey', color: 'black' }} align="center">Username</TableCell>
                         <TableCell style={{backgroundColor:'lightgrey', color: 'black' }} align="center">First Name</TableCell>
                         <TableCell style={{backgroundColor:'lightgrey', color: 'black' }} align="center">Last Name</TableCell>
-                        <TableCell style={{backgroundColor:'lightgrey', color: 'black' }} align="center">Registration Date</TableCell>
+                        <TableCell style={{ backgroundColor: 'lightgrey', color: 'black' }} align="center">Registration Date</TableCell>
+                        <TableCell style={{backgroundColor:'lightgrey', color: 'black' }} align="center">Teacher</TableCell>
+                        <TableCell style={{backgroundColor:'lightgrey', color: 'black' }} align="center">Admin</TableCell>
                         <TableCell style={{backgroundColor:'lightgrey', color: 'black' }} align="center">Email</TableCell>
                     </TableRow>
                 </TableHead>

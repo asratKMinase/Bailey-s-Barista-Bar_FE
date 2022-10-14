@@ -25,7 +25,7 @@ const styleObj = {
     paddingTop: "10px",
 }
 
-const ViewChallenge = () => {
+const ViewClasses = () => {
 
 const url = "http://localhost:9008";
 
@@ -43,21 +43,22 @@ async function display() {
 
     try {
         
-        const response = await fetch(`${url}/challenges/findAllChallenges`);
-        const challengeData = await response.json();
-        console.log(challengeData);
-        const challengeDataRows = challengeData.map((e)=>{
+        const response = await fetch(`${url}/classes/findAllClasses`);
+        const classesData = await response.json();
+        console.log(classesData);
+        const classesDataRows = classesData.map((e)=>{
             
             return (
                 <TableRow>
-                    <TableCell align="center" key ={1}>{e.chaid}</TableCell>
-                    <TableCell align="center" key ={2}>{e.chname}</TableCell>
-                    <TableCell align="center" key ={3}>{e.id.id}</TableCell>
+                    <TableCell align="center" key ={1}>{e.id}</TableCell>
+                    <TableCell align="center" key ={2}>{e.cname}</TableCell>
+                    <TableCell align="center" key={3}>{e.sdate}</TableCell>
+                    <TableCell align="center" key ={4}>{e.edate}</TableCell>
                 </TableRow>
             );
         });
     
-        setBody(challengeDataRows);
+        setBody(classesDataRows);
     } catch (e) {
         console.error(e);
 
@@ -68,24 +69,25 @@ async function display() {
       <>
       <center>
         <nav className="baristasup">
-           <h1 style={styleObj}>Welcome to challenge page</h1>
+           <h1 style={styleObj}>Welcome to classes page</h1>
         </nav>
         <TableContainer component={Paper}>
             <Table >
                 <TableHead>
                     <TableRow>
-                        <TableCell style={{backgroundColor:'lightgrey', color: 'black' }} align="center">Challenge ID</TableCell>
-                        <TableCell style={{backgroundColor:'lightgrey', color: 'black' }} align="center">Challenge Name</TableCell>
-                        <TableCell style={{backgroundColor:'lightgrey', color: 'black' }} align="center">Class ID</TableCell>
+                        <TableCell style={{backgroundColor:'lightgrey', color: 'black' }} align="center">ID</TableCell>
+                        <TableCell style={{backgroundColor:'lightgrey', color: 'black' }} align="center">Classe Name</TableCell>
+                        <TableCell style={{backgroundColor:'lightgrey', color: 'black' }} align="center">Start Date</TableCell>
+                        <TableCell style={{backgroundColor:'lightgrey', color: 'black' }} align="center">End Date</TableCell>
                     </TableRow>
                 </TableHead>
                 <tbody>{body}</tbody>
             </Table>
             </TableContainer>
-            <Button variant='contained' onClick={() => navigate("/challengedashboard")}>Back</Button>
+            <Button variant='contained' onClick={() => navigate("/classesdashboard")}>Back</Button>
       </center>
       </>
 
      );
 }
-export default ViewChallenge;
+export default ViewClasses;

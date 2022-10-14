@@ -58,7 +58,7 @@ const Register = () => {
     try {
       const response = await axios.post(`${url}/users/register`, users);
       console.log(response.data.data);
-        navigate("/login");
+      navigate("/login");
   } catch (error) {
       console.error(error.response);
   }
@@ -90,7 +90,7 @@ const Register = () => {
       <TextField id="outlined-basicE" label="Email" variant="outlined" inputRef={emailInput}/>
       <br></br>
       <br></br>
-      <Button variant='contained' onClick={register}>Register</Button>
+          <Button variant='contained' onClick={register }>Register</Button>
       <Button variant='contained' onClick={() => navigate("/mainnavbar")}>Back</Button>
       <br></br>
       </Paper>
